@@ -1,0 +1,17 @@
+---
+title: "Assignment 5"
+author: "Julia Dagum, Anna Abelman, Simone Albuquerque"
+date: "4/28/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(purrr)
+library(deSolve)
+```
+
+##ESM 232 Assignment 5
+
+Use the ODE solver to numerically find the population from the differential equation: dP/dT = r*P*(1-P/K)
