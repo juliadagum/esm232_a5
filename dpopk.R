@@ -6,7 +6,7 @@
 #' @param K carrying capacity
 #' @return derivative of population with time 
 #' @examples use with ode solver
-#' ode(y=1,time=c(1;100),dexppop, parms=c(0.012))
+#' ode(y=1,time=c(1;100),dpopk, parms=c(0.012))
 
 dpopk = function(time, P, r, K) {
   dpopk = r*P*(1-P/K)

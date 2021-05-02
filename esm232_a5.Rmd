@@ -10,8 +10,29 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(purrr)
 library(deSolve)
+library(ggplot2)
 ```
 
 ##ESM 232 Assignment 5
 
 Use the ODE solver to numerically find the population from the differential equation: dP/dT = r*P*(1-P/K)
+```{r}
+# Source our function for population with carrying capacity
+source("dpopk.R")
+initialpop = 1
+years = seq(from=1, to=50, by=1)
+
+# run the ODE solver
+ODE_pop = ode(y=initialpop, times=years, func=dpopk, K=20, parms=c(0.05))
+# Check value at 50
+tail(ODE_pop)
+colnames(ODE_pop)=c("year","pop")
+
+# extract just the data frame for plotting
+ggplot(as.data.frame(ODE_pop), aes(year,pop,color="red"))+
+  geom_point(show.legend = FALSE)+labs(y="Population", x="Years", title = "Population with Carrying Capacity")+
+  theme_classic()
+
+```
+
+
